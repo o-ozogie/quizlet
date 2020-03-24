@@ -9,12 +9,13 @@ class QuestionsController < ApplicationController
 
     return render status: 404 unless QuestionSet.find_by_id(@params[:set_id])
 
-    Question.create!(question_set_id: @params[:set_id],
-                     description: @params[:description],
-                     answer: @params[:answer],
-                     score_second: @params[:score_second])
+    question = Question.create!(question_set_id: @params[:set_id],
+                                description: @params[:description],
+                                answer: @params[:answer],
+                                score_second: @params[:score_second])
 
-    render status: 201
+    render json: { question_id: question.id },
+           status: 201
   end
 
   def show
