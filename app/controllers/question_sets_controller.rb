@@ -15,6 +15,8 @@ class QuestionSetsController < ApplicationController
     requires(set_id: Integer)
 
     question_set = QuestionSet.find_by_id(@params[:set_id])
+    return render status: 404 unless question_set
+
     questions = []
     question_set.questions.each do |question|
       questions.append(question_id: question.id,
@@ -26,6 +28,8 @@ class QuestionSetsController < ApplicationController
     render json: { title: question_set.title,
                    description: question_set.description,
                    mode: question_set.mode,
+                   user_id: question_set.user.id,
+                   question_set_id: question_set.id,
                    questions: questions },
            status: 200
   end
@@ -34,6 +38,7 @@ class QuestionSetsController < ApplicationController
     requires(set_id: Integer)
 
     question_set = QuestionSet.find_by_id(@params[:set_id])
+    return render status: 404 unless question_set
     return render status: 403 unless question_set.user.id == @payload['user_id']
 
     question_set.title = @params[:title] if @params[:title]
@@ -49,6 +54,7 @@ class QuestionSetsController < ApplicationController
     requires(set_id: Integer)
 
     question_set = QuestionSet.find_by_id(@params[:set_id])
+    return render status: 404 unless question_set
     return render status: 403 unless question_set.user.id == @payload['user_id']
 
     question_set.destroy!

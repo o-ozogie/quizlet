@@ -4,6 +4,8 @@
     <list default="true" id="ebf5f718-a8ce-48a6-9c24-f1170eedcc2b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/question_sets_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/question_sets_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/questions_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/questions_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/scores_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/scores_controller.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +167,7 @@
       <workItem from="1584611758705" duration="20000" />
       <workItem from="1584758666720" duration="4571000" />
       <workItem from="1584937902091" duration="4126000" />
-      <workItem from="1584947959379" duration="7546000" />
+      <workItem from="1584947959379" duration="11950000" />
     </task>
     <servers />
   </component>
