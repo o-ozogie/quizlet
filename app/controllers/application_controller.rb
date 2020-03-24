@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
   require 'jwt_base'
+  require 'net/http'
+
   @@jwt_base = JWTBase::JWTBase.new(ENV['SECRET_KEY_BASE'], 1.days, 2.weeks)
 
   def oauth_required
