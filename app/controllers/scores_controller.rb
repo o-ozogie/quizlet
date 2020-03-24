@@ -11,11 +11,12 @@ class ScoresController < ApplicationController
       return render status: 409
     end
 
-    question.scores.create!(user_id: @payload['user_id'],
-                            result: question.answer == @params[:submit_answer],
-                            submit_answer: @params[:submit_answer])
+    score = question.scores.create!(user_id: @payload['user_id'],
+                                    result: question.answer == @params[:submit_answer],
+                                    submit_answer: @params[:submit_answer])
 
-    render status: 201
+    render json: { score_id: score.id },
+           status: 201
   end
 
   def show
