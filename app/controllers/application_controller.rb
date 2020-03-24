@@ -18,11 +18,11 @@ class ApplicationController < ActionController::API
     req = Net::HTTP::Get.new(url.request_uri)
     req.add_field('Authorization', authorization)
 
-    @resp = http.request(req)
+    @resp = JSON.parse(http.request(req).body)
 
     if @resp['error']
-      render status: @resp['error']['code'],
-             json: @resp['error']['message']
+      return render status: @resp['error']['code'],
+                    json: @resp['error']['message']
     end
   end
 
