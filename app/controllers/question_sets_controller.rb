@@ -4,11 +4,12 @@ class QuestionSetsController < ApplicationController
   def create
     requires(:title, :mode)
 
-    QuestionSet.create!(title: @params[:title],
-                        description: @params[:description],
-                        mode: @params[:mode])
+    question_set = QuestionSet.create!(title: @params[:title],
+                                       description: @params[:description],
+                                       mode: @params[:mode])
 
-    render status: 201
+    render json: { question_set_id: question_set.id },
+           status: 201
   end
 
   def show
@@ -28,7 +29,7 @@ class QuestionSetsController < ApplicationController
     render json: { title: question_set.title,
                    description: question_set.description,
                    mode: question_set.mode,
-                   user_id: question_set.user.id,
+                   author_name: question_set.user.name,
                    question_set_id: question_set.id,
                    questions: questions },
            status: 200
