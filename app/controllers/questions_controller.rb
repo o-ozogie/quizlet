@@ -32,10 +32,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    requires(:score_second,
-             question_id: Integer,
-             description: String,
-             answer: String)
+    requires(question_id: Integer)
 
     question = Question.find_by_id(@params[:question_id])
     return render status: 404 unless question
@@ -45,7 +42,7 @@ class QuestionsController < ApplicationController
 
     question.description = @params[:description] if @params[:description]
     question.answer = @params[:answer] if @params[:answer]
-    question.score_second = @params unless @params[:score_second].nil?
+    question.score_second = @params[:score_second] unless @params[:score_second].nil?
 
     question.save
 
